@@ -36,7 +36,6 @@ namespace student_eligibility_report
                     string theSport = sport.SelectedValue;
                     string theGender = genderList.SelectedValue;
                     int theSeason = int.Parse(seasonList.SelectedValue);
-                    
 
                     // Collect data from sportsTable
                     var sportsList = new List<Sport>();
@@ -47,37 +46,78 @@ namespace student_eligibility_report
                         {
                             continue;
                         }
-                        else
+                        var sportTextBox = (TextBox)row.Cells[0].Controls[0];
+                        var collegeTextBox = (TextBox)row.Cells[1].Controls[0];
+                        var varsityJVClubTextBox = (TextBox)row.Cells[2].Controls[0];
+                        var semesterTextBox = (TextBox)row.Cells[3].Controls[0];
+                        var yearTextBox = (TextBox)row.Cells[4].Controls[0];
+
+                        // Collecting data from the TextBoxes in the Table
+                        string sportValue = sportTextBox.Text.Trim();
+                        string collegeValue = collegeTextBox.Text.Trim();
+                        string varsityJVClubValue = varsityJVClubTextBox.Text.Trim();
+                        string semesterValue = semesterTextBox.Text.Trim();
+                        string yearValue = yearTextBox.Text.Trim();
+
+                        // Skipping empty rows
+                        if (!string.IsNullOrEmpty(sportValue) ||
+                            !string.IsNullOrEmpty(collegeValue) ||
+                            !string.IsNullOrEmpty(varsityJVClubValue) ||
+                            !string.IsNullOrEmpty(semesterValue) ||
+                            !string.IsNullOrEmpty(yearValue))
                         {
-                            var sportTextBox = (TextBox)row.Cells[0].Controls[0];
-                            var collegeTextBox = (TextBox)row.Cells[1].Controls[0];
-                            var varsityJVClubTextBox = (TextBox)row.Cells[2].Controls[0];
-                            var semesterTextBox = (TextBox)row.Cells[3].Controls[0];
-                            var yearTextBox = (TextBox)row.Cells[4].Controls[0];
-
-                            // Collecting data from the TextBoxes in the Table
-                            string sportValue = sportTextBox.Text.Trim();
-                            string collegeValue = collegeTextBox.Text.Trim();
-                            string varsityJVClubValue = varsityJVClubTextBox.Text.Trim();
-                            string semesterValue = semesterTextBox.Text.Trim();
-                            string yearValue = yearTextBox.Text.Trim();
-
-                            // Skipping empty rows
-                            if (!string.IsNullOrEmpty(sportValue) ||
-                                !string.IsNullOrEmpty(collegeValue) ||
-                                !string.IsNullOrEmpty(varsityJVClubValue) ||
-                                !string.IsNullOrEmpty(semesterValue) ||
-                                !string.IsNullOrEmpty(yearValue))
+                            sportsList.Add(new Sport
                             {
-                                sportsList.Add(new Sport
-                                {
-                                    SportName = sportValue,
-                                    College = collegeValue,
-                                    VarsityJVClub = varsityJVClubValue,
-                                    Semester = semesterValue,
-                                    Year = yearValue
-                                });
-                            }
+                                SportName = sportValue,
+                                College = collegeValue,
+                                VarsityJVClub = varsityJVClubValue,
+                                Semester = semesterValue,
+                                Year = yearValue
+                            });
+                        }
+                    }
+
+                    // Collect data from collegeTable
+                    var collegeList = new List<College>();
+                    foreach (TableRow row in collegeTable.Rows)
+                    {
+                        // Skip the header row
+                        if (row.Cells.Count == 0 || row.Cells[0].Controls.Count == 0)
+                        {
+                            continue;
+                        }
+                        var fromTextBox = (TextBox)row.Cells[0].Controls[0];
+                        var toTextBox = (TextBox)row.Cells[1].Controls[0];
+                        var collegeAttendedTextBox = (TextBox)row.Cells[2].Controls[0];
+                        var jobsHeldTextBox = (TextBox)row.Cells[3].Controls[0];
+                        var cityTextBox = (TextBox)row.Cells[4].Controls[0];
+                        var stateTextBox = (TextBox)row.Cells[5].Controls[0];
+
+                        // Collecting data from the TextBoxes in the Table
+                        string fromValue = fromTextBox.Text.Trim();
+                        string toValue = toTextBox.Text.Trim();
+                        string collegeAttendedValue = collegeAttendedTextBox.Text.Trim();
+                        string jobsHeldValue = jobsHeldTextBox.Text.Trim();
+                        string cityValue = cityTextBox.Text.Trim();
+                        string stateValue = stateTextBox.Text.Trim();
+
+                        // Skipping empty rows
+                        if (!string.IsNullOrEmpty(fromValue) ||
+                            !string.IsNullOrEmpty(toValue) ||
+                            !string.IsNullOrEmpty(collegeAttendedValue) ||
+                            !string.IsNullOrEmpty(jobsHeldValue) ||
+                            !string.IsNullOrEmpty(cityValue) ||
+                            !string.IsNullOrEmpty(stateValue))
+                        {
+                            collegeList.Add(new College
+                            {
+                                From = DateTime.Parse(fromValue),
+                                To = DateTime.Parse(toValue),
+                                CollegeAttended = collegeAttendedValue,
+                                Job = jobsHeldValue,
+                                City = cityValue,
+                                State = stateValue
+                            });
                         }
                     }
 
@@ -97,7 +137,8 @@ namespace student_eligibility_report
                         Sport = theSport,
                         Gender = theGender,
                         PreviousSeasons = theSeason,
-                        Sports = sportsList
+                        Sports = sportsList,
+                        CollegesAttended = collegeList
                     };
 
                     using (var context = new StudentEligibilityContext())
@@ -105,7 +146,6 @@ namespace student_eligibility_report
                         context.StudentEligibilities.Add(eligibleStudent);
                         context.SaveChanges();
                     }
-
 
                     // Create the message string
                     var message = $"Thank you for your submission! Here is the data:\n\n" +
@@ -130,6 +170,14 @@ namespace student_eligibility_report
                                    $"Varsity/JV/Club: {sportData.VarsityJVClub}, Semester: {sportData.Semester}, Year: {sportData.Year}\n";
                     }
 
+                    // Append collegeTable data to the message
+                    foreach (var collegeData in collegeList)
+                    {
+                        message += $"From: {collegeData.From}, To: {collegeData.To}, " +
+                                   $"College Attended: {collegeData.CollegeAttended}, Jobs Held: {collegeData.Job}, " +
+                                   $"City: {collegeData.City}, State: {collegeData.State}\n";
+                    }
+
                     // Display the message in a JavaScript alert
                     Response.Write("<script>alert('" + message.Replace("\n", "\\n") + "');</script>");
                 }
@@ -145,6 +193,7 @@ namespace student_eligibility_report
                 }
             }
         }
+
 
 
 
