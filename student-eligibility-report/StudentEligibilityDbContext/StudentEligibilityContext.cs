@@ -1,4 +1,5 @@
 ﻿using student_eligibility_report.Migrations;
+using student_eligibility_report.Migrations.ChildConfigurations;
 using student_eligibility_report.Models;
 using System.Data.Entity;
 
