@@ -5,10 +5,10 @@ using System.Web;
 
 namespace student_eligibility_report.Models
 {
-    public class SportsData
+    public class Sport
     {
         public Guid Id { get; set; }
-        public string Sport { get; set; }
+        public string SportName { get; set; }
         public string College { get; set; }
         public string VarsityJVClub { get; set; }
         public string Semester { get; set; }

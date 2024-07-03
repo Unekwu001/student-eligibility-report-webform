@@ -8,10 +8,10 @@ using System.Web;
 
 namespace student_eligibility_report.Migrations.ChildConfigurations
 {
-    public class SportsDataConfiguration : EntityTypeConfiguration<SportsData>
+    public class CollegeConfiguration : EntityTypeConfiguration<College>
     {
-        public SportsDataConfiguration()
-        {
+        public CollegeConfiguration()
+        { 
             // Configure Primary Key
             HasKey(sd => sd.Id);
 
@@ -19,29 +19,27 @@ namespace student_eligibility_report.Migrations.ChildConfigurations
             .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity); //generated on add
 
             // Configure Properties
-            Property(sd => sd.Sport)
-                .IsRequired()
-                .HasMaxLength(100);
+            Property(sd => sd.From)
+                .IsRequired();
 
-            Property(sd => sd.College)
-                .IsRequired()
-                .HasMaxLength(100);
+            Property(sd => sd.To)
+                .IsRequired();            
 
-            Property(sd => sd.VarsityJVClub)
+            Property(sd => sd.CollegeAttended)
                 .IsRequired()
-                .HasMaxLength(100);
+                .HasMaxLength(500);
 
-            Property(sd => sd.Semester)
+            Property(sd => sd.City)
                 .IsRequired()
-                .HasMaxLength(50);
+                .HasMaxLength(150);
 
-            Property(sd => sd.Year)
-                .IsRequired()
-                .HasMaxLength(100);
+            Property(sd => sd.State)
+              .IsRequired()
+              .HasMaxLength(150);
 
             // Configure Relationships
             HasRequired(sd => sd.StudentEligibility)
-                .WithMany(se => se.StudentSportsData)
+                .WithMany(se => se.CollegesAttended)
                 .HasForeignKey(sd => sd.StudentEligibilityId)
                 .WillCascadeOnDelete(false);
         }

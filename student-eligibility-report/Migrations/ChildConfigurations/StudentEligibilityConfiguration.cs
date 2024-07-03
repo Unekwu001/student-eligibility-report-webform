@@ -61,14 +61,9 @@ namespace student_eligibility_report.Migrations.ChildConfigurations
             Property(e => e.PreviousSeasons)
                 .IsRequired();
 
-            Property(e => e.TimeAccount)
-                .IsRequired()
-                .HasMaxLength(500);
+            
 
-            Property(e => e.CollegeSportsDetails)
-                .HasMaxLength(1000);
-
-            HasMany(e => e.StudentSportsData)
+            HasMany(e => e.Sports)
                 .WithRequired(sd => sd.StudentEligibility)
                 .HasForeignKey(sd => sd.StudentEligibilityId)
                 .WillCascadeOnDelete(false);

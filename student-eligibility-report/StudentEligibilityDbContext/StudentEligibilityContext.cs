@@ -17,7 +17,8 @@ namespace student_eligibility_report.StudentEligibilityDbContext
         }
 
         public virtual DbSet<StudentEligibility> StudentEligibilities { get; set; }
-        public virtual DbSet<SportsData> SportsData { get; set; }
+        public virtual DbSet<Sport> Sports { get; set; }
+        public virtual DbSet<College> Colleges { get; set; } 
 
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -25,7 +26,8 @@ namespace student_eligibility_report.StudentEligibilityDbContext
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.Configurations.Add(new StudentEligibilityConfiguration());
-            modelBuilder.Configurations.Add(new SportsDataConfiguration());
+            modelBuilder.Configurations.Add(new SportsConfiguration());
+            modelBuilder.Configurations.Add(new CollegeConfiguration());
         }
 
 
