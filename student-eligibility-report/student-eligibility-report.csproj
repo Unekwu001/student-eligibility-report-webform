@@ -205,6 +205,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\ChildConfigurations\SportsDataConfiguration.cs" />
     <Compile Include="Migrations\ConfigurationA.cs" />
     <Compile Include="Models\SportsData.cs" />
     <Compile Include="Models\StudentEligibility.cs" />
@@ -232,9 +233,7 @@
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
     </Compile>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Migrations\ChildConfigurations\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />

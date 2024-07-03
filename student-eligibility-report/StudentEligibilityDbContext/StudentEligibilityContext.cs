@@ -1,4 +1,6 @@
-﻿using System.Data.Entity;
+﻿using student_eligibility_report.Migrations;
+using student_eligibility_report.Models;
+using System.Data.Entity;
 
 
 namespace student_eligibility_report.StudentEligibilityDbContext
