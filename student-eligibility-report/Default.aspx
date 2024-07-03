@@ -109,49 +109,37 @@
                         </div>
                     </div>
                      
-                    <div class="row mb-3">
-                      <div class="col-md-12">
-                        <label class="form-label">Accurately account for all your time between high school graduation and the present.
-                            Beginning with the year you left high school, list employment dates, periods of unemployment, armed forces services,
-                            and all educational institutions in which you have registered, including your present college.<br />
-                             Do include summer school. <b>Donot include summer jobs.</b>
-                        </label><hr />
-                             <asp:Table ID="collegeTable" runat="server" CssClass="table table-bordered">
-                                <asp:TableHeaderRow>
-                                    <asp:TableHeaderCell>From (include Month and Year)</asp:TableHeaderCell>
-                                    <asp:TableHeaderCell>To (include Month and Year)</asp:TableHeaderCell>
-                                    <asp:TableHeaderCell>College Attended</asp:TableHeaderCell>
-                                    <asp:TableHeaderCell>Jobs Held</asp:TableHeaderCell>
-                                    <asp:TableHeaderCell>City</asp:TableHeaderCell>
-                                    <asp:TableHeaderCell>State</asp:TableHeaderCell>
-                                </asp:TableHeaderRow>
-                                <asp:TableRow>
-                                    <asp:TableCell><asp:TextBox runat="server" CssClass="form-control" TextMode="Date" ></asp:TextBox></asp:TableCell>
-                                    <asp:TableCell><asp:TextBox runat="server" CssClass="form-control" TextMode="Date" ></asp:TextBox></asp:TableCell>
-                                    <asp:TableCell><asp:TextBox runat="server" CssClass="form-control" ></asp:TextBox></asp:TableCell>
-                                    <asp:TableCell><asp:TextBox runat="server" CssClass="form-control"></asp:TextBox></asp:TableCell>
-                                    <asp:TableCell><asp:TextBox runat="server" CssClass="form-control"></asp:TextBox></asp:TableCell>
-                                    <asp:TableCell><asp:TextBox runat="server" CssClass="form-control"></asp:TextBox></asp:TableCell>
-                                </asp:TableRow>
-                                <asp:TableRow>
-                                    <asp:TableCell><asp:TextBox runat="server" CssClass="form-control" TextMode="Date" ></asp:TextBox></asp:TableCell>
-                                    <asp:TableCell><asp:TextBox runat="server" CssClass="form-control" TextMode="Date" ></asp:TextBox></asp:TableCell>
-                                    <asp:TableCell><asp:TextBox runat="server" CssClass="form-control"></asp:TextBox></asp:TableCell>
-                                    <asp:TableCell><asp:TextBox runat="server" CssClass="form-control"></asp:TextBox></asp:TableCell>
-                                    <asp:TableCell><asp:TextBox runat="server" CssClass="form-control"></asp:TextBox></asp:TableCell>
-                                    <asp:TableCell><asp:TextBox runat="server" CssClass="form-control"></asp:TextBox></asp:TableCell>
-                                </asp:TableRow>
-                                <asp:TableRow>
-                                    <asp:TableCell><asp:TextBox runat="server" CssClass="form-control" TextMode="Date" ></asp:TextBox></asp:TableCell>
-                                    <asp:TableCell><asp:TextBox runat="server" CssClass="form-control" TextMode="Date" ></asp:TextBox></asp:TableCell>
-                                    <asp:TableCell><asp:TextBox runat="server" CssClass="form-control"></asp:TextBox></asp:TableCell>
-                                    <asp:TableCell><asp:TextBox runat="server" CssClass="form-control"></asp:TextBox></asp:TableCell>
-                                    <asp:TableCell><asp:TextBox runat="server" CssClass="form-control"></asp:TextBox></asp:TableCell>
-                                    <asp:TableCell><asp:TextBox runat="server" CssClass="form-control"></asp:TextBox></asp:TableCell>
-                                </asp:TableRow>
-                           </asp:Table>
-                       </div>
-                    </div>
+                     <div class="row mb-3">
+                            <div class="col-md-12">
+                                <label class="form-label">Accurately account for all your time between high school graduation and the present.
+                                    Beginning with the year you left high school, list employment dates, periods of unemployment, armed forces services,
+                                    and all educational institutions in which you have registered, including your present college.<br />
+                                    Do include summer school. <b>Donot include summer jobs.</b>
+                                </label><hr />
+                                <asp:Table ID="collegeTable" runat="server" CssClass="table table-bordered">
+                                    <asp:TableHeaderRow>
+                                        <asp:TableHeaderCell>From (include Month and Year)</asp:TableHeaderCell>
+                                        <asp:TableHeaderCell>To (include Month and Year)</asp:TableHeaderCell>
+                                        <asp:TableHeaderCell>College Attended</asp:TableHeaderCell>
+                                        <asp:TableHeaderCell>Jobs Held</asp:TableHeaderCell>
+                                        <asp:TableHeaderCell>City</asp:TableHeaderCell>
+                                        <asp:TableHeaderCell>State</asp:TableHeaderCell>
+                                        <asp:TableHeaderCell>Action</asp:TableHeaderCell>
+                                    </asp:TableHeaderRow>
+                                    <asp:TableRow>
+                                        <asp:TableCell><asp:TextBox runat="server" CssClass="form-control" TextMode="Date" /></asp:TableCell>
+                                        <asp:TableCell><asp:TextBox runat="server" CssClass="form-control" TextMode="Date" /></asp:TableCell>
+                                        <asp:TableCell><asp:TextBox runat="server" CssClass="form-control" /></asp:TableCell>
+                                        <asp:TableCell><asp:TextBox runat="server" CssClass="form-control" /></asp:TableCell>
+                                        <asp:TableCell><asp:TextBox runat="server" CssClass="form-control" /></asp:TableCell>
+                                        <asp:TableCell><asp:TextBox runat="server" CssClass="form-control" /></asp:TableCell>
+                                        <asp:TableCell><button type="button" class="btn btn-danger" onclick="removeRow(this)">Remove</button></asp:TableCell>
+                                    </asp:TableRow>
+                                </asp:Table>
+                                <button type="button" class="btn btn-primary mt-2" onclick="addCollegeRow()">Add Row</button>
+                           </div>
+                      </div>
+
 
 
                     <div class="row mb-3">
@@ -164,31 +152,19 @@
                                     <asp:TableHeaderCell>Varsity/JV/Club</asp:TableHeaderCell>
                                     <asp:TableHeaderCell>Semester</asp:TableHeaderCell>
                                     <asp:TableHeaderCell>Year</asp:TableHeaderCell>
-                                </asp:TableHeaderRow>
+                                </asp:TableHeaderRow>                            
                                 <asp:TableRow>
                                     <asp:TableCell><asp:TextBox runat="server" CssClass="form-control"></asp:TextBox></asp:TableCell>
                                     <asp:TableCell><asp:TextBox runat="server" CssClass="form-control"></asp:TextBox></asp:TableCell>
                                     <asp:TableCell><asp:TextBox runat="server" CssClass="form-control"></asp:TextBox></asp:TableCell>
                                     <asp:TableCell><asp:TextBox runat="server" CssClass="form-control"></asp:TextBox></asp:TableCell>
                                     <asp:TableCell><asp:TextBox runat="server" CssClass="form-control"></asp:TextBox></asp:TableCell>
-                                </asp:TableRow>
-                                <asp:TableRow>
-                                    <asp:TableCell><asp:TextBox runat="server" CssClass="form-control"></asp:TextBox></asp:TableCell>
-                                    <asp:TableCell><asp:TextBox runat="server" CssClass="form-control"></asp:TextBox></asp:TableCell>
-                                    <asp:TableCell><asp:TextBox runat="server" CssClass="form-control"></asp:TextBox></asp:TableCell>
-                                    <asp:TableCell><asp:TextBox runat="server" CssClass="form-control"></asp:TextBox></asp:TableCell>
-                                    <asp:TableCell><asp:TextBox runat="server" CssClass="form-control"></asp:TextBox></asp:TableCell>
-                                </asp:TableRow>
-                                <asp:TableRow>
-                                    <asp:TableCell><asp:TextBox runat="server" CssClass="form-control"></asp:TextBox></asp:TableCell>
-                                    <asp:TableCell><asp:TextBox runat="server" CssClass="form-control"></asp:TextBox></asp:TableCell>
-                                    <asp:TableCell><asp:TextBox runat="server" CssClass="form-control"></asp:TextBox></asp:TableCell>
-                                    <asp:TableCell><asp:TextBox runat="server" CssClass="form-control"></asp:TextBox></asp:TableCell>
-                                    <asp:TableCell><asp:TextBox runat="server" CssClass="form-control"></asp:TextBox></asp:TableCell>
-                                </asp:TableRow>
-                            </asp:Table>
+                                     <asp:TableCell><button type="button" class="btn btn-danger" onclick="removeRow(this)">Remove</button></asp:TableCell>
+                                 </asp:TableRow>
+                             </asp:Table>
+                             <button type="button" class="btn btn-primary mt-2" onclick="addSportsRow()">Add Row</button>
                         </div>
-                    </div>
+                   </div>
 
                     <div class="text-center">
                         <asp:Button ID="SubmitButton" runat="server" Text="Submit" CssClass="btn btn-primary" OnClick="SubmitButton_Click"/>
@@ -197,4 +173,63 @@
             </div>
         </div>
     </main>
+
+    <!-- JavaScript functions -->
+    <script>
+        function addCollegeRow() {
+            var table = document.getElementById('<%= collegeTable.ClientID %>');
+            if (!table) {
+                console.error("collegeTable not found.");
+                return;
+            }
+
+            var newRow = table.insertRow(-1);
+
+            var cell1 = newRow.insertCell(0);
+            var cell2 = newRow.insertCell(1);
+            var cell3 = newRow.insertCell(2);
+            var cell4 = newRow.insertCell(3);
+            var cell5 = newRow.insertCell(4);
+            var cell6 = newRow.insertCell(5);
+            var cell7 = newRow.insertCell(6);
+
+            cell1.innerHTML = '<input type="date" class="form-control" />';
+            cell2.innerHTML = '<input type="date" class="form-control" />';
+            cell3.innerHTML = '<input type="text" class="form-control" />';
+            cell4.innerHTML = '<input type="text" class="form-control" />';
+            cell5.innerHTML = '<input type="text" class="form-control" />';
+            cell6.innerHTML = '<input type="text" class="form-control" />';
+            cell7.innerHTML = '<button type="button" class="btn btn-danger" onclick="removeRow(this)">Remove</button>';
+        }
+
+        function addSportsRow() {
+            var table = document.getElementById('<%= sportsTable.ClientID %>');
+            if (!table) {
+                console.error("sportsTable not found.");
+                return;
+            }
+
+            var newRow = table.insertRow(-1);
+
+            var cell1 = newRow.insertCell(0);
+            var cell2 = newRow.insertCell(1);
+            var cell3 = newRow.insertCell(2);
+            var cell4 = newRow.insertCell(3);
+            var cell5 = newRow.insertCell(4);
+            var cell6 = newRow.insertCell(5);
+
+
+            cell1.innerHTML = '<input type="text" class="form-control" />';
+            cell2.innerHTML = '<input type="text" class="form-control" />';
+            cell3.innerHTML = '<input type="text" class="form-control" />';
+            cell4.innerHTML = '<input type="text" class="form-control" />';
+            cell5.innerHTML = '<input type="text" class="form-control" />';
+            cell6.innerHTML = '<button type="button" class="btn btn-danger" onclick="removeRow(this)">Remove</button>';
+        }
+
+        function removeRow(button) {
+            var row = button.parentNode.parentNode;
+            row.parentNode.removeChild(row);
+        }
+    </script>
 </asp:Content>

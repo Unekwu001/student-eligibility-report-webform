@@ -14,6 +14,7 @@
 
     <webopt:bundlereference runat="server" path="~/Content/css" />
     <link href="./Content/images/vertex-logo.svg" rel="shortcut icon" type="image/x-icon" />
+     <script src="Scripts/StudentEligibility.js" type="text/javascript"></script>
 
 </head>
 <body>
@@ -50,24 +51,11 @@
                 <p>&copy; <%: DateTime.Now.Year %> - Vertex</p>
             </footer>
         </div>
+
     </form>
     <asp:PlaceHolder runat="server">
         <%: Scripts.Render("~/Scripts/bootstrap.js") %>
     </asp:PlaceHolder>
-
-
-    <script type="text/javascript">
-        document.addEventListener('DOMContentLoaded', function() {
-            document.getElementById("SubmitButton").onclick = function() {
-                var dob = document.getElementById("dob").value;
-                var lastDateAttended = document.getElementById("lastDateAttended").value;
-                if (new Date(dob) > new Date() || new Date(lastDateAttended) > new Date()) {
-                    alert("Date of Birth or Last Date Attended cannot be in the future.");
-                    return false;
-                }
-            };
-        });
-    </script>
 
 </body>
 </html>
