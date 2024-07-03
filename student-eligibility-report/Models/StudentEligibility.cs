@@ -20,9 +20,11 @@ namespace student_eligibility_report.Models
         public string Sport { get; set; }
         public string Gender { get; set; }
         public int PreviousSeasons { get; set; }
-        public string TimeAccount { get; set; }
-        public string CollegeSportsDetails { get; set; }
-        public ICollection<SportsData> StudentSportsData { get; set; }
+        public DateTime DateSubmitted { get; set; } = DateTime.UtcNow;
+        public ICollection<Sport> Sports { get; set; }
+        public ICollection<College> CollegesAttended { get; set; }  
+        
+
 
     }
 }

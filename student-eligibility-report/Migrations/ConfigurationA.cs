@@ -8,7 +8,7 @@ namespace student_eligibility_report.Migrations
         public ConfigurationA()
         {
             AutomaticMigrationsEnabled = true;
-            AutomaticMigrationDataLossAllowed = false;
+            AutomaticMigrationDataLossAllowed = true;
         }
     }
 }

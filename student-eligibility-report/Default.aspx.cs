@@ -36,10 +36,10 @@ namespace student_eligibility_report
                     string theSport = sport.SelectedValue;
                     string theGender = genderList.SelectedValue;
                     int theSeason = int.Parse(seasonList.SelectedValue);
-                    string theTimeAccount = timeAccount.Text.Trim();
+                    
 
                     // Collect data from sportsTable
-                    var sportsList = new List<SportsData>();
+                    var sportsList = new List<Sport>();
                     foreach (TableRow row in sportsTable.Rows)
                     {
                         // Skip the header row
@@ -69,9 +69,9 @@ namespace student_eligibility_report
                                 !string.IsNullOrEmpty(semesterValue) ||
                                 !string.IsNullOrEmpty(yearValue))
                             {
-                                sportsList.Add(new SportsData
+                                sportsList.Add(new Sport
                                 {
-                                    Sport = sportValue,
+                                    SportName = sportValue,
                                     College = collegeValue,
                                     VarsityJVClub = varsityJVClubValue,
                                     Semester = semesterValue,
@@ -82,7 +82,7 @@ namespace student_eligibility_report
                     }
 
                     // Create the StudentEligibility entity
-                    var studentEligibility = new StudentEligibility
+                    var eligibleStudent = new StudentEligibility
                     {
                         Id = Guid.NewGuid(),
                         PresentCollege = thePresentCollege,
@@ -97,13 +97,12 @@ namespace student_eligibility_report
                         Sport = theSport,
                         Gender = theGender,
                         PreviousSeasons = theSeason,
-                        TimeAccount = theTimeAccount,
-                        StudentSportsData = sportsList
+                        Sports = sportsList
                     };
 
                     using (var context = new StudentEligibilityContext())
                     {
-                        context.StudentEligibilities.Add(studentEligibility);
+                        context.StudentEligibilities.Add(eligibleStudent);
                         context.SaveChanges();
                     }
 
@@ -122,13 +121,12 @@ namespace student_eligibility_report
                                   $"Sport This Season: {theSport}\n" +
                                   $"Gender: {theGender}\n" +
                                   $"Previous Seasons of Competition: {theSeason}\n" +
-                                  $"Time Account: {theTimeAccount}\n\n" +
                                   $"Sports Table Data:\n";
 
                     // Append sportsTable data to the message
                     foreach (var sportData in sportsList)
                     {
-                        message += $"Sport: {sportData.Sport}, College: {sportData.College}, " +
+                        message += $"Sport: {sportData.SportName}, College: {sportData.College}, " +
                                    $"Varsity/JV/Club: {sportData.VarsityJVClub}, Semester: {sportData.Semester}, Year: {sportData.Year}\n";
                     }
 

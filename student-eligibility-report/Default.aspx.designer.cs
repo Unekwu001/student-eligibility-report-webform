@@ -267,22 +267,13 @@ namespace student_eligibility_report
         protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvSeason;
 
         /// <summary>
-        /// timeAccount control.
+        /// collegeTable control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox timeAccount;
-
-        /// <summary>
-        /// rfvTimeAccount control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvTimeAccount;
+        protected global::System.Web.UI.WebControls.Table collegeTable;
 
         /// <summary>
         /// sportsTable control.

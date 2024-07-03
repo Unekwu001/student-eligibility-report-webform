@@ -1,12 +1,12 @@
 ﻿<%@ Page Title="Vertex | Home" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="student_eligibility_report.Default" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
-    <main class="container my-5">
+    <main class="container my-5" style="background-color:skyblue;">
         <section class="text-center mb-4">
             <img id="aspnetTitle" src="./Content/images/vertex-logo.svg" alt="Vertex Logo" style="height: 5vh;">
         </section>
 
-        <div class="card shadow-sm">
+        <div class="card shadow-sm" style="background-color:aliceblue;">
             <div class="card-header text-center">
                 <h2>Student Eligibility Report</h2>
             </div>
@@ -14,7 +14,7 @@
                 <h6>Please, type or print neatly.</h6>
                 <h6>FORM 1. Side 1.</h6>
             </div>
-            <div class="card-body">
+            <div class="card-body" >
                 <asp:ValidationSummary ID="ValidationSummary1" runat="server" CssClass="alert alert-danger" HeaderText="Please correct the following errors:" />
 
                 <asp:Panel runat="server" DefaultButton="SubmitButton">
@@ -108,14 +108,51 @@
                             <asp:RequiredFieldValidator ID="rfvSeason" runat="server" ControlToValidate="seasonList" InitialValue="" ErrorMessage="Season is required" CssClass="text-danger" Display="Dynamic"></asp:RequiredFieldValidator>
                         </div>
                     </div>
-
+                     
                     <div class="row mb-3">
-                        <div class="col-md-12">
-                            <label class="form-label">Accurately account for all your time between high school graduation and the present.</label>
-                            <asp:TextBox ID="timeAccount" runat="server" CssClass="form-control" TextMode="MultiLine" Rows="3"></asp:TextBox>
-                            <asp:RequiredFieldValidator ID="rfvTimeAccount" runat="server" ControlToValidate="timeAccount" ErrorMessage="This field is required" CssClass="text-danger" Display="Dynamic"></asp:RequiredFieldValidator>
-                        </div>
+                      <div class="col-md-12">
+                        <label class="form-label">Accurately account for all your time between high school graduation and the present.
+                            Beginning with the year you left high school, list employment dates, periods of unemployment, armed forces services,
+                            and all educational institutions in which you have registered, including your present college.<br />
+                             Do include summer school. <b>Donot include summer jobs.</b>
+                        </label><hr />
+                             <asp:Table ID="collegeTable" runat="server" CssClass="table table-bordered">
+                                <asp:TableHeaderRow>
+                                    <asp:TableHeaderCell>From (include Month and Year)</asp:TableHeaderCell>
+                                    <asp:TableHeaderCell>To (include Month and Year)</asp:TableHeaderCell>
+                                    <asp:TableHeaderCell>College Attended</asp:TableHeaderCell>
+                                    <asp:TableHeaderCell>Jobs Held</asp:TableHeaderCell>
+                                    <asp:TableHeaderCell>City</asp:TableHeaderCell>
+                                    <asp:TableHeaderCell>State</asp:TableHeaderCell>
+                                </asp:TableHeaderRow>
+                                <asp:TableRow>
+                                    <asp:TableCell><asp:TextBox runat="server" CssClass="form-control" TextMode="Date" ></asp:TextBox></asp:TableCell>
+                                    <asp:TableCell><asp:TextBox runat="server" CssClass="form-control" TextMode="Date" ></asp:TextBox></asp:TableCell>
+                                    <asp:TableCell><asp:TextBox runat="server" CssClass="form-control" ></asp:TextBox></asp:TableCell>
+                                    <asp:TableCell><asp:TextBox runat="server" CssClass="form-control"></asp:TextBox></asp:TableCell>
+                                    <asp:TableCell><asp:TextBox runat="server" CssClass="form-control"></asp:TextBox></asp:TableCell>
+                                    <asp:TableCell><asp:TextBox runat="server" CssClass="form-control"></asp:TextBox></asp:TableCell>
+                                </asp:TableRow>
+                                <asp:TableRow>
+                                    <asp:TableCell><asp:TextBox runat="server" CssClass="form-control" TextMode="Date" ></asp:TextBox></asp:TableCell>
+                                    <asp:TableCell><asp:TextBox runat="server" CssClass="form-control" TextMode="Date" ></asp:TextBox></asp:TableCell>
+                                    <asp:TableCell><asp:TextBox runat="server" CssClass="form-control"></asp:TextBox></asp:TableCell>
+                                    <asp:TableCell><asp:TextBox runat="server" CssClass="form-control"></asp:TextBox></asp:TableCell>
+                                    <asp:TableCell><asp:TextBox runat="server" CssClass="form-control"></asp:TextBox></asp:TableCell>
+                                    <asp:TableCell><asp:TextBox runat="server" CssClass="form-control"></asp:TextBox></asp:TableCell>
+                                </asp:TableRow>
+                                <asp:TableRow>
+                                    <asp:TableCell><asp:TextBox runat="server" CssClass="form-control" TextMode="Date" ></asp:TextBox></asp:TableCell>
+                                    <asp:TableCell><asp:TextBox runat="server" CssClass="form-control" TextMode="Date" ></asp:TextBox></asp:TableCell>
+                                    <asp:TableCell><asp:TextBox runat="server" CssClass="form-control"></asp:TextBox></asp:TableCell>
+                                    <asp:TableCell><asp:TextBox runat="server" CssClass="form-control"></asp:TextBox></asp:TableCell>
+                                    <asp:TableCell><asp:TextBox runat="server" CssClass="form-control"></asp:TextBox></asp:TableCell>
+                                    <asp:TableCell><asp:TextBox runat="server" CssClass="form-control"></asp:TextBox></asp:TableCell>
+                                </asp:TableRow>
+                           </asp:Table>
+                       </div>
                     </div>
+
 
                     <div class="row mb-3">
                         <div class="col-md-12">
