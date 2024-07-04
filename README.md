@@ -1,13 +1,13 @@
 Student Eligibility Report
-----------------------------
-Quickly Run the Project on visual studio
-----------------------------------------
+-------------------------------
+-------------------------------
+**Quickly Run the Project on visual studio**
 1. Ensure you have Asp .NET 4.7.2 Sdk installed on visual studio before cloning this project.
 2. Clone and Build solution.
 3. Set Default.aspx as start up page. Default.aspx can be found inside the views folder.
 4. Run the project.
 
-Overview
+**Overview**
 Student Eligibility Report is a web application designed to manage and report student eligibility for sports and academic programs. Built with ASP.NET Web Forms and Entity Framework, the application allows users to submit student eligibility information, manage sports and college data, and view detailed error logs using ELMAH.
 
 Features
