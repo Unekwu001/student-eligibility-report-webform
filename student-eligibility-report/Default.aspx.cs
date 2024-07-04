@@ -3,6 +3,7 @@ using student_eligibility_report.StudentEligibilityDbContext;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -19,14 +20,14 @@ namespace student_eligibility_report
 
 
 
-        protected void SubmitButton_Click(object sender, EventArgs e)
+        protected async Task SubmitButton_Click(object sender, EventArgs e)
         {
             if (!Page.IsValid) return;
 
             try
             {
                 var eligibleStudent = CreateStudentEligibility();
-                SaveStudentEligibility(eligibleStudent);
+                await SaveStudentEligibility(eligibleStudent);
                 DisplaySuccessMessage(eligibleStudent);
             }
             catch (FormatException)
@@ -45,7 +46,7 @@ namespace student_eligibility_report
 
         private StudentEligibility CreateStudentEligibility()
         {
-            // Retrieve form values
+            // Retrieving form values
             string thePresentCollege = presentCollege.Text.Trim();
             string thePresentConference = presentConference.Text.Trim();
             string theName = name.Text.Trim();
@@ -59,13 +60,13 @@ namespace student_eligibility_report
             string theGender = genderList.SelectedValue;
             int theSeason = int.Parse(seasonList.SelectedValue);
 
-            // Collect data from sportsTable
+            // Collecting data from sportsTable
             var sportsList = GetSportsList();
 
-            // Collect data from collegeTable
+            // Collecting data from collegeTable
             var collegeList = GetCollegeList();
 
-            // Create the StudentEligibility entity
+            // Creating the StudentEligibility entity
             return new StudentEligibility
             {
                 Id = Guid.NewGuid(),
@@ -183,12 +184,12 @@ namespace student_eligibility_report
 
 
 
-        private void SaveStudentEligibility(StudentEligibility eligibleStudent)
+        private async Task SaveStudentEligibility(StudentEligibility eligibleStudent)
         {
             using (var context = new StudentEligibilityContext())
             {
                 context.StudentEligibilities.Add(eligibleStudent);
-                context.SaveChanges();
+                await context.SaveChangesAsync();
             }
         }
 
