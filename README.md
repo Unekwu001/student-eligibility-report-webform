@@ -6,6 +6,7 @@ Student Eligibility Report
 2. Clone and Build solution.
 3. Set Default.aspx as start up page. Default.aspx can be found inside the views folder.
 4. Run the project.
+5. To view Elmah page , go to https://localhost:44389/elmah.axd. (Note that your port may be different from mine)
 
 **Overview**
 Student Eligibility Report is a web application designed to manage and report student eligibility for sports and academic programs. Built with ASP.NET Web Forms and Entity Framework, the application allows users to submit student eligibility information, manage sports and college data, and view detailed error logs using ELMAH.
