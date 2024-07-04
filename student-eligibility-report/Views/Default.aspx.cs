@@ -29,7 +29,7 @@ namespace student_eligibility_report
                 var eligibleStudent = CreateStudentEligibility();
                 SaveStudentEligibility(eligibleStudent);
                 DisplaySuccessMessage(eligibleStudent);
-                HttpContext.Current.Response.Redirect("~/SuccessPage.aspx", false);
+                HttpContext.Current.Response.Redirect("~/Views/SuccessPage.aspx", false);
             }
             catch (FormatException ex)
             {
@@ -241,7 +241,9 @@ namespace student_eligibility_report
         private void LogErrorThenRedirectUserToErrorPage(string errorMessage)
         {
             Elmah.ErrorSignal.FromCurrentContext().Raise(new Exception(errorMessage));
-            HttpContext.Current.Response.Redirect("~/ErrorPage.aspx", false);
+            HttpContext.Current.Response.Redirect("~/Views/ErrorPage.aspx", false);
+ 
+            HttpContext.Current.ApplicationInstance.CompleteRequest();
         }
 
 
