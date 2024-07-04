@@ -20,23 +20,24 @@ namespace student_eligibility_report
 
 
 
-        protected async Task SubmitButton_Click(object sender, EventArgs e)
+        protected  void SubmitButton_Click(object sender, EventArgs e)
         {
             if (!Page.IsValid) return;
 
             try
             {
                 var eligibleStudent = CreateStudentEligibility();
-                await SaveStudentEligibility(eligibleStudent);
+                SaveStudentEligibility(eligibleStudent);
                 DisplaySuccessMessage(eligibleStudent);
+                HttpContext.Current.Response.Redirect("~/SuccessPage.aspx", false);
             }
-            catch (FormatException)
+            catch (FormatException ex)
             {
-                LogAndDisplayError("Error parsing dates. Please ensure they are in the correct format.");
+                LogErrorThenRedirectUserToErrorPage($"A format error occurred: {ex.Message}");
             }
             catch (Exception ex)
             {
-                LogAndDisplayError($"An unexpected error occurred: {ex.Message}");
+                LogErrorThenRedirectUserToErrorPage($"An unexpected error occurred: {ex.Message}");
             }
         }
 
@@ -184,12 +185,12 @@ namespace student_eligibility_report
 
 
 
-        private async Task SaveStudentEligibility(StudentEligibility eligibleStudent)
+        private void SaveStudentEligibility(StudentEligibility eligibleStudent)
         {
             using (var context = new StudentEligibilityContext())
             {
                 context.StudentEligibilities.Add(eligibleStudent);
-                await context.SaveChangesAsync();
+                context.SaveChanges();
             }
         }
 
@@ -237,10 +238,10 @@ namespace student_eligibility_report
 
 
 
-        private void LogAndDisplayError(string errorMessage)
+        private void LogErrorThenRedirectUserToErrorPage(string errorMessage)
         {
             Elmah.ErrorSignal.FromCurrentContext().Raise(new Exception(errorMessage));
-            Response.Write("<script>alert('" + errorMessage.Replace("'", "\\'") + "');</script>");
+            HttpContext.Current.Response.Redirect("~/ErrorPage.aspx", false);
         }
 
 

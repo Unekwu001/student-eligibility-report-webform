@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Vertex | Home" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="student_eligibility_report.Default" Async="true"%>
+﻿<%@ Page Title="Vertex | Home" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="student_eligibility_report.Default" Async="false"%>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <main class="container my-5" style="background-color:skyblue;">
