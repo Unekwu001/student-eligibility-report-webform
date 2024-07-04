@@ -20,14 +20,14 @@ namespace student_eligibility_report
 
 
 
-        protected  void SubmitButton_Click(object sender, EventArgs e)
+        protected  async void SubmitButton_Click(object sender, EventArgs e)
         {
             if (!Page.IsValid) return;
 
             try
             {
                 var eligibleStudent = CreateStudentEligibility();
-                SaveStudentEligibility(eligibleStudent);
+                await SaveStudentEligibility(eligibleStudent);
                 DisplaySuccessMessage(eligibleStudent);
                 HttpContext.Current.Response.Redirect("~/Views/SuccessPage.aspx", false);
             }
@@ -185,12 +185,12 @@ namespace student_eligibility_report
 
 
 
-        private void SaveStudentEligibility(StudentEligibility eligibleStudent)
+        private async Task SaveStudentEligibility(StudentEligibility eligibleStudent)
         {
             using (var context = new StudentEligibilityContext())
             {
                 context.StudentEligibilities.Add(eligibleStudent);
-                context.SaveChanges();
+                await context.SaveChangesAsync();
             }
         }
 
