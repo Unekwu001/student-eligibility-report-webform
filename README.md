@@ -81,25 +81,36 @@ Folder Structure
 /Views
     /Site.master
     /Default.aspx
-    /ErrorPage.aspx
+    /ErrorPage.aspx.
+    
 /Content
     /images
-        /vertex-logo.svg
+        /vertex-logo.svg.
+        
 /Scripts
     /js
-    /css
+    /css.
+    
 /Models
     /StudentEligibility.cs
     /Sport.cs
-    /College.cs
+    /College.cs.
+    
 /StudentEligibilityDbContext
-    /StudentEligibilityContext.cs
-/Web.config
+    /StudentEligibilityContext.cs.
+    
+/Web.config.
+
 /Views: Contains master page and default page.
+
 /Content: Stores images, CSS, and other static resources.
+
 /Scripts: Contains JavaScript and CSS files.
+
 /Models: Contains model classes for the application.
+
 /StudentEligibilityDbContext: Contains database context for Entity Framework.
+
 Web.config: Configuration file for the application.
 
 
