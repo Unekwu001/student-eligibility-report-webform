@@ -1,9 +1,9 @@
-﻿<%@ Page Title="Vertex | Home" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="student_eligibility_report.Default" Async="false"%>
+﻿<%@ Page Title="Vertex | Home" Language="C#" MasterPageFile="~/Views/Site.master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="student_eligibility_report.Default" Async="false"%>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <main class="container my-5" style="background-color:skyblue;">
         <section class="text-center mb-4">
-            <img id="aspnetTitle" src="./Content/images/vertex-logo.svg" alt="Vertex Logo" style="height: 5vh;">
+            <img id="aspnetTitle" src="../Content/images/vertex-logo.svg" alt="Vertex Logo" style="height: 5vh;">
         </section>
 
         <div class="card shadow-sm" style="background-color:aliceblue;">
