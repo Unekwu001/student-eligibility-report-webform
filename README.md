@@ -18,64 +18,62 @@ Error Handling: ELMAH (Error Logging Modules and Handlers) integration for error
 Custom Error Pages: User-friendly error and success pages for a better user experience.
 Asynchronous Operations: The application uses async/await patterns for database operations.
 
-Table of Contents
-Features
-Technologies
-Setup Instructions
-Usage
-Folder Structure
-Contributing
-License
+**Table of Contents**
+1. Features
+2. Technologies
+3. Setup Instructions
+4. Usage
+5. Folder Structure
+6. Contributing
+7. License
 
 Technologies
 -------------
-ASP.NET Web Forms: Framework for building dynamic web applications.
-Entity Framework 6: ORM for database operations.
-SQL Server: Database management system.
-ELMAH: Error logging and management.
-Bootstrap: CSS framework for responsive design.
+1. ASP.NET Web Forms: Framework for building dynamic web applications.
+2. Entity Framework 6: ORM for database operations.
+3. SQL Server: Database management system.
+4. ELMAH: Error logging and management.
+5. Bootstrap: CSS framework for responsive design.
 
 
 Setup Instructions
 -------------------
 Prerequisites
-.NET Framework 4.7.2 or higher
-SQL Server
-Visual Studio 2019 or higher
+1. .NET Framework 4.7.2 or higher
+2. SQL Server
+3. Visual Studio 2019 or higher
 
 Clone the Repository
 -------------------
-git clone https://github.com/Unekwu001/student-eligibility-report-webform.git
-cd student-eligibility-report-webform
-
-Update the Connection String
-Update the connection string in Web.config to match your SQL Server configuration
+1. git clone https://github.com/Unekwu001/student-eligibility-report-webform.git
+2. cd student-eligibility-report-webform
+3. Update the Connection String
+4. Update the connection string in Web.config to match your SQL Server configuration
 <connectionStrings>
     <add name="StudentEligibilityContext" connectionString="Data Source=(local);Initial Catalog=StudentEligibilityReportDb;Integrated Security=True;TrustServerCertificate=True;" providerName="System.Data.SqlClient" />
 </connectionStrings>
-
-Restore NuGet Packages
-Open the solution in Visual Studio and restore NuGet packages:
-Update-Package -reinstall
-Build and Run
-Build the solution and run the application:
-dotnet build
-dotnet run
-Navigate to http://localhost:your-port to access the application.
+5. Restore NuGet Packages
+6. Open the solution in Visual Studio and restore NuGet packages:
+7. Update-Package -reinstall
+8. Build and Run
+9. Build the solution and run the application:
+10. dotnet build
+11. dotnet run
+12. Navigate to http://localhost:your-port to access the application.
 
 Usage
 -----------
-Submitting Eligibility Information
-Navigate to the Home page.
-Fill in the student’s eligibility information.
-Add multiple sports and college records.
-Click the Submit button to save the information.
-Viewing Error Logs
-Navigate to http://localhost:your-port/elmah.axd to access the ELMAH error log page.
-Review the logs for any recorded errors.
-Error and Success Pages
-Error Page: Custom error page for user-friendly error messages.
-Success Page: Displays a thank you message after successful submission.
+**Submitting Eligibility Information**
+1. Navigate to the Home page.
+2. Fill in the student’s eligibility information.
+3. Add multiple sports and college records.
+4. Click the Submit button to save the information.
+5. Viewing Error Logs
+6. Navigate to http://localhost:your-port/elmah.axd to access the ELMAH error log page.
+7. Review the logs for any recorded errors.
+8. Error and Success Pages
+9. Error Page: Custom error page for user-friendly error messages.
+10. Success Page: Displays a thank you message after successful submission.
 
 
 Folder Structure
